@@ -2,6 +2,7 @@ import requests
 import time
 from aiocqhttp.message import MessageSegment
 import difflib
+import Levenshtein as lev
 
 token = "0c332b89f58298883d4a60d0c8704f5fa4126a0ec88c9bad76afa411eec4b8c2b9508641e9cdea73964b12bcb8b742fe46d1a72f0074354aa4708d4bcb7679c7"
 
@@ -33,6 +34,11 @@ def csearch(search):
     request = requests.get(url)
 
     return request.json()
+
+def calc_similar(s1, s2):
+    distance = lev.distance(s1, s2)
+    max_len = max(len(s1), len(s2))
+    return 1 - (distance / max_len)
 
 def csearch_all(search):
     csearch_data = csearch(search)
@@ -90,21 +96,44 @@ def csearch_all(search):
         return msg[:-1]
 
     # 方案C: 使用模糊搜索
-    close_matches = difflib.get_close_matches(search, song, n=5, cutoff=0.6)
+
+    close_matches = []
+    max = 0
+
+    for music in song:
+        # close_matches = [] # 永远铭记sb时刻
+        similar = calc_similar(search.lower(), music.lower())
+        if similar >= max:
+            max = similar
+        close_matches.append((music, similar))
+
+    
+    close_matches = sorted(close_matches, key=lambda x: (x[1]), reverse=True)[:5]
+
+    cutoff = 0.13
+    temp = []
+
+    for matches, similar in close_matches:
+        if similar >= cutoff:
+            temp.append((matches, similar))
+    
+    close_matches = temp
+
+
+    # close_matches -> song name
     if len(close_matches) > 1:
         msg = ""
-        for matches in close_matches:
+        for matches, similar in close_matches:
             data_search = csearch(matches)
-            msg += chuni_index[data_search[0]["id"]] + ". " + data_search[0]["title"] + "\n"
+            msg += chuni_index[data_search[0]["id"]] + ". " + data_search[0]["title"] + f" 相似度: {round(similar, 3)}" +"\n"
         return msg[:-1]
     elif len(close_matches) == 1:
-        data_search = csearch(close_matches[0])
+        data_search = csearch(close_matches[0][0])
         id = chuni_index[data_search[0]["id"]]
         
         request = chuni_data[id]
 
-        msg = f"{id}. {request['meta']['title']}\n种类: {request['meta']['genre']}\n艺术家: {request['meta']['artist']}\nBPM: {request['meta']['bpm']}\n更新日期: {request['meta']['release']}\n"
-
+        msg = f"{id}. {request['meta']['title']}\n种类: {request['meta']['genre']}\n艺术家: {request['meta']['artist']}\nBPM: {request['meta']['bpm']}\n更新日期: {request['meta']['release']}\n相似度: {round(close_matches[0][1], 3)}\n"
         msg2 = "难度: "
         msg3 = "定数: "
         msg4 = "物量: "
@@ -196,4 +225,3 @@ def add_alias(id, name):
         chuni_alias[id] = [name]
     json_str = json.dumps(chuni_alias)
     open("./module/chunithm/data/chuni_alias.json", "w").write(json_str)
-

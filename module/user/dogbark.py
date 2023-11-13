@@ -46,7 +46,8 @@ def get_dogbark_rank(user, uid, sender, nickname):
     message = "狗叫排行:\n"
     for id in user_uidList:
         dogbark.append((id, user[id]["dogbark"]["dogbark_count"]))
-        dogbark = sorted(dogbark, key=lambda x: (x[1]), reverse=True)
+    
+    dogbark = sorted(dogbark, key=lambda x: (x[1]), reverse=True)
     
     count = 1
     for id in dogbark[:10]:
@@ -74,7 +75,8 @@ def get_daily_dogbark_rank(user, uid, sender, nickname):
     message = "今日狗叫排行:\n"
     for id in user_uidList:
         dogbark.append((id, user[id]["dogbark"]["today_dogbark"]))
-        dogbark = sorted(dogbark, key=lambda x: (x[1]), reverse=True)
+    
+    dogbark = sorted(dogbark, key=lambda x: (x[1]), reverse=True)
     
     count = 1
     for id in dogbark[:10]:

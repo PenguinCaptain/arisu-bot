@@ -2,6 +2,7 @@ from aiocqhttp import CQHttp, Event
 import json
 import time
 import module.user, module.chunithm, module.malody
+import random
 
 bot = CQHttp()
 
@@ -104,6 +105,7 @@ async def handle_dogbark_message(event: Event):
     if uid == event.self_id or gid in [624670021]: # 过滤掉自己发送的消息
         return
     message_cq = message_to_cq(event.message)
+    dogbark = open("./src/dogbark.txt").read().splitlines()
     if any(temp in message_cq for temp in dogbark): # 用any函数检查message_cq变量中是否含有dogbark中的其中一个元素 鉴定狗叫 -> bool
         try:
             user[str(uid)]["dogbark"]["dogbark_count"] += 1
@@ -117,7 +119,12 @@ async def handle_dogbark_message(event: Event):
         json_content_str = json.dumps(nickname)
         open("./data/nickname.json", "w").write(json_content_str)
     if ( time.time() + (8 * 3600) ) // 86400 > ( init["check_dogbark"] + (8 * 3600) ) // 86400:
-        user_uidList = user.keys()
+        user_uidList = list(user.keys())
+        # random.shuffle(user_uidList)
+        # dogbark = []
+        # for id in user_uidList:
+        #     dogbark.append((id, user[id]["dogbark"]["today_dogbark"]))
+        #     dogbark = sorted(dogbark, key=lambda x: (x[1]), reverse=True)
         for id in user_uidList:
             user[id]["hidden_value"] = user[id]["hidden_value"] + int(user[id]["dogbark"]["today_dogbark"] * (user[id]["lv"] ** 2) // 10)
             user[id]["dogbark"]["today_dogbark"] = 0
@@ -126,6 +133,14 @@ async def handle_dogbark_message(event: Event):
         open("./data/init.json", "w").write(json_content_str)
         json_content_str = json.dumps(user)
         open("./data/user.json", "w").write(json_content_str) # 保存 应该狗叫就够
-
+        # yesterday = time.strftime(r"%Y/%m/%d", time.localtime(time.time() - 86400))
+        # try:
+        #     nickname_dbking = nickname[str(dogbark[0][0])]
+        # except:
+        #     nickname_dbking = dogbark[0][0]
+        # message = f"{nickname_dbking}({dogbark[0][0]})是昨天({yesterday})的狗叫王, 一共狗叫了{dogbark[0][1]}次, 恭喜捏"
+        # print(message)
+        # for group in init["white_list"]:
+        #     await bot.send_group_msg(self_id=event.self_id, group_id=729529363, message=message)
     
 bot.run(host='127.0.0.1', port=8080)
