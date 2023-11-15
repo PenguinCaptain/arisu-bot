@@ -45,26 +45,34 @@ def csearch_all(search):
 
     keys = chuni_alias.keys()
 
+    alias_match = []
     # 方案A: 使用别名搜索
     for key in keys:
         if search in chuni_alias[key]:
-            request = chuni_data[key]
-            msg = f"{key}. {request['meta']['title']}\n种类: {request['meta']['genre']}\n艺术家: {request['meta']['artist']}\nBPM: {request['meta']['bpm']}\n更新日期: {request['meta']['release']}\n"
-            msg2 = "难度: "
-            msg3 = "定数: "
-            msg4 = "物量: "
+            alias_match.append(key)
+    if len(alias_match) == 1:
+        key = alias_match[0]
+        request = chuni_data[key]
+        msg = f"{key}. {request['meta']['title']}\n种类: {request['meta']['genre']}\n艺术家: {request['meta']['artist']}\nBPM: {request['meta']['bpm']}\n更新日期: {request['meta']['release']}\n"
+        msg2 = "难度: "
+        msg3 = "定数: "
+        msg4 = "物量: "
 
-            for diff in ["BAS", "ADV", "EXP", "MAS", "ULT"]:
-                if request["data"].get(diff) == None:
-                    continue
-                msg2 += change_diff(request["data"][diff]["level"]) + "/"
-                msg3 += str(request["data"][diff]["const"]) + "/"
-                msg4 += str(request["data"][diff]["maxcombo"]) + "/"
-            
-            msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
+        for diff in ["BAS", "ADV", "EXP", "MAS", "ULT"]:
+            if request["data"].get(diff) == None:
+                continue
+            msg2 += change_diff(request["data"][diff]["level"]) + "/"
+            msg3 += str(request["data"][diff]["const"]) + "/"
+            msg4 += str(request["data"][diff]["maxcombo"]) + "/"
+        
+        msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
 
-            return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[key]["jaketFile"])
-
+        return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[key]["jaketFile"])
+    elif len(alias_match) > 1:
+        msg = ""
+        for match in alias_match:
+            msg += match + ". " + chuni_data[match]["meta"]["title"] + "\n"
+        return msg[:-1]
 
     if len(csearch_data) == 1: # 方案B: 使用chunirec搜索
         id = csearch_data[0]["id"]
@@ -225,3 +233,5 @@ def add_alias(id, name):
         chuni_alias[id] = [name]
     json_str = json.dumps(chuni_alias)
     open("./module/chunithm/data/chuni_alias.json", "w").write(json_str)
+
+print(csearch_all("末白"))
