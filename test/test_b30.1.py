@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import time
 
 # 获取cookies
 account = "acekuro0219"
@@ -13,17 +14,32 @@ cookies_login = response_login.headers['Set-Cookie']
 login_page = 'https://lng-tgk-aime-gw.am-all.net/common_auth/login/sid/'
 response_redirect = requests.post(login_page, headers={'cookie': cookies_login}, data={
     'retention': 1, 'sid': account, 'password': password}, allow_redirects=False)
-
 redirect_page = response_redirect.headers['location']
 cookies_redirect = response_redirect.cookies
 
 response = requests.get(redirect_page, cookies=cookies_redirect, allow_redirects=False)
 
+# 获取 player_data
 player_data = response.text
-
 soup = BeautifulSoup(player_data, 'html.parser')
+soup_data = soup.find(id="inner").find("div", {"class": "player_data_right"})
 
-soup_form = soup.find(id="inner").find("div", {"class": "player_data_right"}).find_all("form")
+player_data = open("./best30_playerData.html").read()
+soup = BeautifulSoup(player_data, 'html.parser')
+# soup_data = soup.find(id="inner").find("div", {"class": "player_data_right"})
+
+team = soup.find("div", {"class": "player_team_data"}).div.string
+honor = soup.find("div", {"class": "player_honor_short"}).div.div.span.string
+player_name_soup = soup.find("div", {"class": "player_name"}).find_all("div")
+player_level = player_name_soup[0].string
+player_name = player_name_soup[1].string
+player_rating_max = soup.find("div", {"class": "player_rating_max"}).string
+del player_name_soup
+
+
+update_time = time.strftime(r"%Y-%m-%dT%H:%M:%S+08:00", time.localtime(time.time()))
+
+# open("best30_playerData.html", "w").write(str(soup_data))
 
 # #inner > div.frame01.w460 > div.frame01_inside > div.mt_10 > div.box_playerprofile.\.clearfix > div.player_data_right
 
@@ -54,13 +70,10 @@ response_best = requests.get(best30_page, cookies=cookies)
 # 解析Best30 html
 
 content = response_best.text
-
 soup = BeautifulSoup(content, 'html.parser')
-
 soup_form = soup.find(id="inner").find("div", {"class": "box05 w400"}).find_all("form")
 
 song_data = []
-
 replace = {"0": "Basic", "1": "Advance", "2": "Expert", "3": "Master", "4": "Ultima"}
 
 for soup_best in soup_form:
@@ -85,11 +98,12 @@ for soup_best in soup_form:
 open("./best30.preview.json", "w").write(json.dumps(song_data))
 
 player_data = {
-    "honor": "NEW COMER",
-    "name": "klqieFan",
+    "team": team,
+    "honor": honor,
+    "name": player_name,
     "rating": 16.46,
-    "ratingMax": 16.53,
-    "updatedAt": "2023-11-09T18:09:02+08:00",
+    "ratingMax": player_rating_max,
+    "updatedAt": update_time,
     "best": song_data,
     "recent": [],
     "candicate": []
