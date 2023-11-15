@@ -3,6 +3,8 @@ import json
 import time
 import module.user, module.chunithm, module.malody
 import random
+from html import unescape
+from urllib.parse import quote
 
 bot = CQHttp()
 
@@ -51,11 +53,12 @@ def message_to_cq(message): # 将event.message转义成原先的cq码
 # handle commands
 @bot.on_message
 async def _(event: Event):
+    
     gid = event.group_id # 群号 / message.private -> None
     uid = event.user_id # QQ号
     if uid == event.self_id or gid in [624670021]: # 过滤掉自己发送的消息
         return
-    message = event.message
+    message = unescape(event.message)
     message_cq = message_to_cq(message)
     sender = event.sender # message.private -> {} / message.group ->　dataがある
     print(uid, gid, message_cq)
@@ -65,7 +68,7 @@ async def _(event: Event):
     if message_cq.startswith("/江江"): # 江江模块 分割到plugin/user/__init__.py进行处理再返回
         message_return = module.user.handle_command(uid, gid, message_cq, user, sender, nickname)
         try:
-            await bot.send(event, message_return) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
+            await bot.send(event, quote(message_return)) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
         # 注：请记得加上await！！！！
             if message_return == "updated":
                 dogbark = open("./src/dogbark.txt").read().splitlines()
@@ -76,14 +79,14 @@ async def _(event: Event):
         try:
             if message_return == None:
                 return
-            await bot.send(event, message_return) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
+            await bot.send(event, quote(message_return)) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
         # 注：请记得加上await！！！！
         except:
             pass
     elif message_cq.startswith("/malody"):
         message_return = module.malody.handle_command(message_cq)
         try:
-            await bot.send(event, message_return) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
+            await bot.send(event, quote(message_return)) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
         # 注：请记得加上await！！！！
         except:
             pass

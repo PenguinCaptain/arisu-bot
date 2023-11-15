@@ -18,20 +18,21 @@ response_redirect = requests.post(login_page, headers={'cookie': cookies_login},
 redirect_page = response_redirect.headers['location']
 cookies_redirect = response_redirect.cookies
 
-# 获取 player_data _1
 response = requests.get(redirect_page, cookies=cookies_redirect)
-player_data = response.content
+player_data = response.text
 
-cookies = requests.get(redirect_page, cookies=cookies_redirect, allow_redirects=False).cookies # 获取cookies
 
+response = requests.get(redirect_page, cookies=cookies_redirect, allow_redirects=False) # 获取cookies
 # 如果"_t"不在cookies内 -> 登录失败，或许是账号/密码错误
+cookies = response.cookies
 
 if '_t' not in cookies:
     print("Account or Password is invalid. Please Try Again.")
 else:
     print('Get userId successfully.')
 
-# 获取 player_data _2
+# 获取 player_data
+
 
 soup = BeautifulSoup(player_data, 'html.parser')
 
@@ -42,7 +43,7 @@ honor = soup.find("div", {"class": "player_honor_short"}).div.div.span.string
 player_name_soup = soup.find("div", {"class": "player_name"}).find_all("div")
 player_level = player_name_soup[0].string
 player_name = player_name_soup[1].string
-player_rating_max = soup.find("div", {"class": "player_rating_max"}).string
+player_rating_max = float(soup.find("div", {"class": "player_rating_max"}).string)
 del player_name_soup
 
 
