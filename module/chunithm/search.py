@@ -219,7 +219,7 @@ def calc(arg1, arg2):
 def alias(id):
     try:
         alias_try = chuni_alias[id]
-        return_msg = ""
+        return_msg = f"[{id}]. {chuni_data[id]['meta']['title']}的别名如下:\n"
         for i in alias_try:
             return_msg += i + ", "
         return return_msg[:-2]
