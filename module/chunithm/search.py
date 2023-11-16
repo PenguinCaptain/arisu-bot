@@ -33,6 +33,8 @@ def csearch(search):
 
     request = requests.get(url)
 
+    print(request.json())
+
     return request.json()
 
 def calc_similar(s1, s2):
@@ -50,29 +52,33 @@ def csearch_all(search):
     for key in keys:
         if search in chuni_alias[key]:
             alias_match.append(key)
-    if len(alias_match) == 1:
-        key = alias_match[0]
-        request = chuni_data[key]
-        msg = f"{key}. {request['meta']['title']}\n种类: {request['meta']['genre']}\n艺术家: {request['meta']['artist']}\nBPM: {request['meta']['bpm']}\n更新日期: {request['meta']['release']}\n"
-        msg2 = "难度: "
-        msg3 = "定数: "
-        msg4 = "物量: "
+    try:
+        if len(alias_match) == 1:
+            key = alias_match[0]
+            request = chuni_data[key]
+            msg = f"{key}. {request['meta']['title']}\n种类: {request['meta']['genre']}\n艺术家: {request['meta']['artist']}\nBPM: {request['meta']['bpm']}\n更新日期: {request['meta']['release']}\n"
+            msg2 = "难度: "
+            msg3 = "定数: "
+            msg4 = "物量: "
 
-        for diff in ["BAS", "ADV", "EXP", "MAS", "ULT"]:
-            if request["data"].get(diff) == None:
-                continue
-            msg2 += change_diff(request["data"][diff]["level"]) + "/"
-            msg3 += str(request["data"][diff]["const"]) + "/"
-            msg4 += str(request["data"][diff]["maxcombo"]) + "/"
+            for diff in ["BAS", "ADV", "EXP", "MAS", "ULT"]:
+                if request["data"].get(diff) == None:
+                    continue
+                msg2 += change_diff(request["data"][diff]["level"]) + "/"
+                msg3 += str(request["data"][diff]["const"]) + "/"
+                msg4 += str(request["data"][diff]["maxcombo"]) + "/"
+            
+            msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
+
+            return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[key]["jaketFile"])
+        elif len(alias_match) > 1:
+            msg = ""
+            for match in alias_match:
+                msg += match + ". " + chuni_data[match]["meta"]["title"] + "\n"
+            return msg[:-1]
+    except Exception as e:
+            return e + "\n" + "该更新了！"
         
-        msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
-
-        return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[key]["jaketFile"])
-    elif len(alias_match) > 1:
-        msg = ""
-        for match in alias_match:
-            msg += match + ". " + chuni_data[match]["meta"]["title"] + "\n"
-        return msg[:-1]
 
     if len(csearch_data) == 1: # 方案B: 使用chunirec搜索
         id = csearch_data[0]["id"]
@@ -234,4 +240,4 @@ def add_alias(id, name):
     json_str = json.dumps(chuni_alias)
     open("./module/chunithm/data/chuni_alias.json", "w").write(json_str)
 
-print(csearch_all("末白"))
+print(csearch_all("love and justice"))

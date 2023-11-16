@@ -23,3 +23,11 @@ def score_to_rating(score, const):
         rating = 0
     return math.floor(rating*100)/100
 
+import json
+data = json.loads(open("./data_song_to_const.json").read())
+
+def song_to_rating(name, diff, score):
+    
+    const = data[name]["data"][diff]["const"]
+    rating = score_to_rating(score, const)
+    return rating

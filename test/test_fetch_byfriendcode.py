@@ -4,10 +4,12 @@ import requests
 import json
 from http.cookiejar import CookiePolicy
 from lxml import html
+from calc_score import *
 
 CHUNITHM_INTL_SEGA_ID = "acekuro0219"
 CHUNITHM_INTL_SEGA_PASSWORD = "gzycTaffyxxm0915"
 CHUNITHM_TARGET_FRIEND_CODE = "9063147588258"
+
 
 if not CHUNITHM_INTL_SEGA_ID or not CHUNITHM_INTL_SEGA_PASSWORD:
     raise Exception("Please set CHUNITHM_INTL_SEGA_ID and CHUNITHM_INTL_SEGA_PASSWORD")
@@ -46,11 +48,17 @@ async def main():
     register_favorite(session)
 
     print("Fetching record...")
-    record = battle(session)
+    player_name, record = battle(session)
+
+    data = {
+        "player_name": player_name,
+        "best": record
+    }
 
     print("Saving record...")
-    with open("record.json", "w") as f:
-        json.dump(record, f, indent=4, ensure_ascii=False)
+    with open("best30.fetchByFrdCode.json", "w") as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
+    return data
 
 
 def get_difficulty(id):
@@ -67,6 +75,14 @@ def get_difficulty(id):
     else:
         raise Exception("Invalid difficulty id")
 
+diff_to_chunirec = {
+    "0": "BAS",
+    "1": "ADV",
+    "2": "EXP",
+    "3": "MAS",
+    "4": "ULT"
+}
+
 
 def battle(session):
     url = "https://chunithm-net-eng.com/mobile/friend/genreVs/sendBattleStart/"
@@ -82,8 +98,15 @@ def battle(session):
                 "token": session.cookies["_t"],
             },
         )
+
         tree = html.fromstring(response.content)
+
+        player_name = tree.xpath('//*[@id="inner"]/div[3]/div[2]/div[3]/form/div[1]/select[2]/option/text()')[0]
+
         music_boxes = tree.xpath('//div[contains(@class, "music_box")]')
+
+        print(player_name, type(player_name))
+
         if not music_boxes:
             raise Exception("No songs available")
         for music_box in music_boxes:
@@ -102,16 +125,22 @@ def battle(session):
             isAJ = "icon_alljustice" in fcaj_img
             isFC = "icon_fullcombo" in fcaj_img or isAJ
 
+            score = int(score.replace(",", ""))
+            
+            rating = song_to_rating(music_name, diff_to_chunirec[str(i)], score)
+
             record.append(
                 {
                     "music_name": music_name,
                     "difficulty": get_difficulty(str(i)),
-                    "score": score.replace(",", ""),
+                    "score": score,
+                    "rating": rating,
                     "is_fc": isFC,
                     "is_aj": isAJ,
                 }
             )
-    return record
+        record = sorted(record, key=lambda x: (x["rating"]), reverse=True)
+    return player_name, record
 
 
 def register_favorite(session):
@@ -163,4 +192,5 @@ async def get_cookies():
 
 
 if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(main())
+    data = asyncio.get_event_loop().run_until_complete(main())
+    print(data)

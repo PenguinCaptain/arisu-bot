@@ -17,14 +17,16 @@ key = chunithm_data.keys()
 data1 = {}
 data2 = {}
 data3 = {}
+data4 = {}
 
 for data in data_showall():
     # for chuni_data in chunithm_data:
     for single_key in key:
         chuni_data = chunithm_data[single_key]
-        if (chuni_data["name"] == data["meta"]["title"] and int(chuni_data["id"]) < 8000) or (data["meta"]["title"].startswith(chuni_data["name"]) and int(chuni_data["id"]) >= 8000 and re.search("】", data["meta"]["title"]) != None):
+        if (chuni_data["title"] == data["meta"]["title"] and int(chuni_data["id"]) < 8000) or (data["meta"]["title"].startswith(chuni_data["title"]) and int(chuni_data["id"]) >= 8000 and re.search("】", data["meta"]["title"]) != None):
             data1["c" + str(chuni_data["id"])] = data
             data2[data["meta"]["id"]] = "c" + str(chuni_data["id"])
+            data4[data["meta"]["title"]] = data
             continue
 
 # for chuni_data in chunithm_data:
@@ -35,6 +37,7 @@ for single_key in key:
 open("./module/chunithm/data/data_chunirec.json", "w").write(json.dumps(data1))
 open("./module/chunithm/data/data_chunirec_index.json", "w").write(json.dumps(data2))
 open("./module/chunithm/data/data_unibot.json", "w").write(json.dumps(data3))
+open("./module/chunithm/data/data_song_to_const.json", "w").write(json.dumps(data4))
 
 
 

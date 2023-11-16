@@ -68,7 +68,7 @@ async def _(event: Event):
     if message_cq.startswith("/江江"): # 江江模块 分割到plugin/user/__init__.py进行处理再返回
         message_return = module.user.handle_command(uid, gid, message_cq, user, sender, nickname)
         try:
-            await bot.send(event, quote(message_return)) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
+            await bot.send(event, message_return) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
         # 注：请记得加上await！！！！
             if message_return == "updated":
                 dogbark = open("./src/dogbark.txt").read().splitlines()
@@ -79,14 +79,14 @@ async def _(event: Event):
         try:
             if message_return == None:
                 return
-            await bot.send(event, quote(message_return)) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
+            await bot.send(event, message_return) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
         # 注：请记得加上await！！！！
         except:
             pass
     elif message_cq.startswith("/malody"):
         message_return = module.malody.handle_command(message_cq)
         try:
-            await bot.send(event, quote(message_return)) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
+            await bot.send(event, message_return) # 注: 我求你了不要在发信息的时候漏了写event这个参数！！！！！！
         # 注：请记得加上await！！！！
         except:
             pass
