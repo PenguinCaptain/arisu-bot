@@ -30,4 +30,4 @@ def song_to_rating(name, diff, score):
     
     const = data[name]["data"][diff]["const"]
     rating = score_to_rating(score, const)
-    return rating
+    return rating, const

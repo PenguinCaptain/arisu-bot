@@ -48,11 +48,14 @@ async def main():
     register_favorite(session)
 
     print("Fetching record...")
-    player_name, record = battle(session)
+    player_name, record, best30 = battle(session)
 
     data = {
         "player_name": player_name,
-        "best": record
+        "rating": "----",
+        "rating_max": "----",
+        "best": record,
+        "best30": best30
     }
 
     print("Saving record...")
@@ -107,6 +110,9 @@ def battle(session):
 
         print(player_name, type(player_name))
 
+        best30_total = 0
+        count = 30
+
         if not music_boxes:
             raise Exception("No songs available")
         for music_box in music_boxes:
@@ -127,20 +133,25 @@ def battle(session):
 
             score = int(score.replace(",", ""))
             
-            rating = song_to_rating(music_name, diff_to_chunirec[str(i)], score)
+            rating, const = song_to_rating(music_name, diff_to_chunirec[str(i)], score)
+
+            if count > 0:
+                count -= 1
+                best30_total += rating
 
             record.append(
                 {
                     "music_name": music_name,
                     "difficulty": get_difficulty(str(i)),
                     "score": score,
+                    "const": const,
                     "rating": rating,
                     "is_fc": isFC,
                     "is_aj": isAJ,
                 }
             )
         record = sorted(record, key=lambda x: (x["rating"]), reverse=True)
-    return player_name, record
+    return player_name, record, round(best30_total / 30, 4)
 
 
 def register_favorite(session):

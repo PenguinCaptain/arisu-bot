@@ -95,6 +95,7 @@ for soup_best in soup_form:
         "difficulty": replace[data_input[0]["value"]],
         "id": "c" + data_input[2]["value"],
         "rating": score_to_rating(score, const),
+        "const": const,
         "token": data_input[3]["value"],
         "isAllJustice": False,
         "isFullCombo": False
@@ -126,6 +127,7 @@ for soup_best in soup_form:
         "difficulty": replace[data_input[0]["value"]],
         "id": "c" + data_input[2]["value"],
         "rating": score_to_rating(score, const),
+        "const": const,
         "token": data_input[3]["value"],
         "isAllJustice": False,
         "isFullCombo": False

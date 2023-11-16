@@ -70,14 +70,14 @@ def csearch_all(search):
             
             msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
 
-            return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[key]["jaketFile"])
+            return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[key]["image"])
         elif len(alias_match) > 1:
             msg = ""
             for match in alias_match:
                 msg += match + ". " + chuni_data[match]["meta"]["title"] + "\n"
             return msg[:-1]
     except Exception as e:
-            return e + "\n" + "该更新了！"
+            return str(e) + "\n" + "该更新了！"
         
 
     if len(csearch_data) == 1: # 方案B: 使用chunirec搜索
@@ -102,7 +102,7 @@ def csearch_all(search):
         
         msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
 
-        return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[chuni_index[request['meta']['id']]]["jaketFile"])
+        return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[chuni_index[request['meta']['id']]]["image"])
     elif len(csearch_data) > 1:
         msg = ""
         for data in csearch_data:
@@ -161,7 +161,7 @@ def csearch_all(search):
         
         msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
 
-        return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[chuni_index[request['meta']['id']]]["jaketFile"])
+        return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[chuni_index[request['meta']['id']]]["image"])
     else:
         return "好像没有找到符合的结果"
         
@@ -183,7 +183,7 @@ def search_by_id(id):
     
     msg = msg + msg2[:-1] + "\n" + msg3[:-1] + "\n" + msg4[:-1]
 
-    return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[chuni_index[request['meta']['id']]]["jaketFile"])
+    return msg + MessageSegment.image("https://new.chunithm-net.com/chuni-mobile/html/mobile/img/" + chuni_unibot[chuni_index[request['meta']['id']]]["image"])
 
 
 import re
@@ -240,4 +240,4 @@ def add_alias(id, name):
     json_str = json.dumps(chuni_alias)
     open("./module/chunithm/data/chuni_alias.json", "w").write(json_str)
 
-print(csearch_all("love and justice"))
+print(csearch_all("种植园纷争"))
