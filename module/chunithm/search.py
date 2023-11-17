@@ -240,4 +240,4 @@ def add_alias(id, name):
     json_str = json.dumps(chuni_alias)
     open("./module/chunithm/data/chuni_alias.json", "w").write(json_str)
 
-print(csearch_all("种植园纷争"))
+# print(csearch_all("种植园纷争"))

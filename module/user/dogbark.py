@@ -26,7 +26,15 @@ def get_dogbark_info(uid, user, sender, message, nickname):
         while previous_count == 0:
             k += 1
             previous_count = dogbark_data["dogbark_count"] - dogbark[rank - 2 - k][1]
-    message_return = f'{sender}\n狗叫排名:#{rank}/{len(user_uidList)} ({previous_count})\n总狗叫次数:{dogbark_data["dogbark_count"]}\n今日狗叫次数:{dogbark_data["today_dogbark"]}\n上次狗叫时间:{time.strftime(r"%Y/%m/%d %H:%M", time.localtime(dogbark_data["last_dogbark"]))}'
+    
+    level = 0
+    m = 0
+    while dogbark_data["dogbark_count"] > m:
+        m += 10 * 2 ** (level // 10)
+        level += 1
+
+    
+    message_return = f'{sender} Lv.{level}\n狗叫排名:#{rank}/{len(user_uidList)} ({previous_count})\n总狗叫次数:{dogbark_data["dogbark_count"]}\n今日狗叫次数:{dogbark_data["today_dogbark"]}\n上次狗叫时间:{time.strftime(r"%Y/%m/%d %H:%M", time.localtime(dogbark_data["last_dogbark"]))}'
     return message_return
 
 def get_stat(user):

@@ -5,6 +5,7 @@ import module.user, module.chunithm, module.malody
 import random
 from html import unescape
 from urllib.parse import quote
+import re
 
 bot = CQHttp()
 
@@ -75,7 +76,7 @@ async def _(event: Event):
         except:
             pass
     elif message_cq.startswith("/chuni"): # chunithm模块
-        message_return = module.chunithm.handle_command(message_cq)
+        message_return = module.chunithm.handle_command(message_cq, uid)
         try:
             if message_return == None:
                 return
@@ -109,7 +110,7 @@ async def handle_dogbark_message(event: Event):
         return
     message_cq = message_to_cq(event.message)
     dogbark = open("./src/dogbark.txt").read().splitlines()
-    if any(temp in message_cq for temp in dogbark): # 用any函数检查message_cq变量中是否含有dogbark中的其中一个元素 鉴定狗叫 -> bool
+    if any(re.search(temp, message_cq) != None for temp in dogbark): # 用any函数检查message_cq变量中是否含有dogbark中的其中一个元素 鉴定狗叫 -> bool
         try:
             user[str(uid)]["dogbark"]["dogbark_count"] += 1
         except:
