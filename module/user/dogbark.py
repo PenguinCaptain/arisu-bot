@@ -29,7 +29,7 @@ def get_dogbark_info(uid, user, sender, message, nickname):
     
     level = 0
     m = 0
-    while dogbark_data["dogbark_count"] > m:
+    while dogbark_data["dogbark_count"] >= m:
         m += 10 * 2 ** (level // 10)
         level += 1
 

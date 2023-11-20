@@ -62,10 +62,12 @@ async def _(event: Event):
     message = unescape(event.message)
     message_cq = message_to_cq(message)
     sender = event.sender # message.private -> {} / message.group ->　dataがある
-    print(uid, gid, message_cq)
-    nickname[str(uid)] = sender["nickname"] # 保存每一个人的QQ昵称
+    try:
+        nickname[str(uid)] = sender["nickname"] # 保存每一个人的QQ昵称
+    except:
+        pass
     
-
+    call = False
     if message_cq.startswith("/江江"): # 江江模块 分割到plugin/user/__init__.py进行处理再返回
         message_return = module.user.handle_command(uid, gid, message_cq, user, sender, nickname)
         try:
@@ -97,8 +99,11 @@ async def _(event: Event):
         json_content_str = json.dumps(nickname)
         open("./data/nickname.json", "w").write(json_content_str)
         print("保存成功")
+    else: 
+        return
 
-        
+    print(uid, gid, message_cq)
+
             
 
 
@@ -110,7 +115,14 @@ async def handle_dogbark_message(event: Event):
         return
     message_cq = message_to_cq(event.message)
     dogbark = open("./src/dogbark.txt").read().splitlines()
+    # flag = False
+    # for temp in dogbark:
+    #     if re.search(temp, message_cq) != None:
+    #         print(temp)
+    #         flag = True
+    # if flag == True:
     if any(re.search(temp, message_cq) != None for temp in dogbark): # 用any函数检查message_cq变量中是否含有dogbark中的其中一个元素 鉴定狗叫 -> bool
+        print(message_cq + "->" + "狗叫")
         try:
             user[str(uid)]["dogbark"]["dogbark_count"] += 1
         except:

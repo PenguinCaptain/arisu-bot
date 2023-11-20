@@ -1,0 +1,32 @@
+{
+    "message_type": "group",
+    "sub_type": "normal",
+    "message_id": 0,
+    "group_id": 624670021,
+    "user_id": 2908341461,
+    "anonymous": null,
+    "message": [
+        {
+            "type": "image",
+            "data": {
+                "file": "http://gchat.qpic.cn/gchatpic_new/2908341461/624670021-2816332216-547F8C328C77885F4D1486539C39EBFA/0?term=255\u0026is_origin=0"
+            }
+        }
+    ],
+    "raw_message": "",
+    "font": 0,
+    "sender": {
+        "user_id": 2908341461,
+        "nickname": "Lion king",
+        "card": "\u633D\u661F\u793E\u7684\u677E\u539F\u82B1\u97F3",
+        "sex": "unknown",
+        "age": 0,
+        "area": "",
+        "level": "15",
+        "role": "member",
+        "title": ""
+    },
+    "time": 1699354910,
+    "self_id": 2676306539,
+    "post_type": "message"
+}

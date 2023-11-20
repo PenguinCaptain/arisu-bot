@@ -1,5 +1,6 @@
 import module.chunithm.search as search
 import module.chunithm.b30 as b30
+import module.chunithm.fumen as fumen
 import json
 
 
@@ -25,19 +26,45 @@ def handle_command(message, uid):
         elif msg in ["b30"]:
             sega_id = json.load(open("./module/chunithm/data/sega_id.json"))
             try:
-                data = sega_id[str(uid)]
-                message_return = b30.generate_b30(data["account"], data["password"])
+                if params == None:
+                    data_en = sega_id[str(uid)]["en"]
+                elif params == "jp":
+                    data_jp = sega_id[str(uid)]["jp"]
+                elif params == "cn":
+                    pass
             except:
-                message_return = "找不到账号密码\n请使用/chuni bind [sega账号] [密码]进行绑定\n注: 只支持国际服的b30查询"
+                message_return = "找不到账号密码\n国际服:请使用/chuni bind [sega账号] [密码] or /chuni bind [好友码] fc 进行绑定\n日服:请使用/chuni bind [chunirec ユーザーID] jp 进行绑定\n国服: 请使用/chuni b30 cn进行查询 不需要绑定"
+                return message_return
+            if params == None:
+                message_return = b30.generate_b30(data_en["account"], data_en["password"])
+            elif params == "jp":
+                message_return = b30.generate_b30_jp(data_jp["name"])
+            elif params == "cn":
+                message_return = b30.generate_b30_cn(uid)
+            return message_return
+            
         elif msg in ["bind", "绑定"]:
             params = params.split(" ", 2)
             sega_id = json.load(open("./module/chunithm/data/sega_id.json"))
-            sega_id[str(uid)] = {
-                "account": params[0],
-                "password": params[1]
-            }
+            if sega_id.get(str(uid)) == None:
+                sega_id[str(uid)] = {
+                    "en": {},
+                    "en_frd": {},
+                    "jp": {}
+                }
+            if params[1] == "jp":
+                sega_id[str(uid)]["jp"] = {
+                    "name": params[0]
+                }
+            else:
+                sega_id[str(uid)]["en"] = {
+                    "account": params[0],
+                    "password": params[1]
+                }
             open("./module/chunithm/data/sega_id.json", "w").write(json.dumps(sega_id))
             return "绑定成功！请记得撤回你的segaid账号哦"
+        elif msg in ["谱面预览", "谱", "谱面", "chart", "fumen", "fm"]:
+            message_return = fumen.handle_fumen(params)
         else:
             message_return = "暂不支持相关指令 / 没有相关的指令"
     except Exception as e:
