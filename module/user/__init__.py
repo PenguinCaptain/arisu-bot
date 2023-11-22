@@ -16,6 +16,8 @@ def handle_command(uid, gid, message, user, sender, nickname):
             message_return = sign.sign(user, uid, sender)
         elif msg in ["个人信息", "info"]:
             message_return = sign.info(user, uid, sender)
+        elif msg in ["gprank", "forbes", "fhb", "GPrank", "GPRANK", "富豪榜", "福布斯排行榜"]:
+            message_return = sign.rank_forbes(user, uid, sender, nickname)
         elif msg in ["添加关键词", "word"]:
             message_return = dogbark.append_wordings(message)
         else:
