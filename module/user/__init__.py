@@ -21,8 +21,7 @@ def handle_command(uid, gid, message, user, sender, nickname):
         else:
             message_return = "暂不支持相关指令 / 没有相关的指令"
     except Exception as e:
-        print(e)
-        message_return = "会不会是指令打错了?"
+        message_return = repr(e)
     # print(message_return)
     return message_return
     

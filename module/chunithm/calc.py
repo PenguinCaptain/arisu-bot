@@ -1,5 +1,8 @@
+def truncate_decimal(decimal, place):
+    decimal = str(decimal).split(".")
+    return float(decimal[0] + "." + decimal[1][:place])
+
 def score_to_rating(score, const):
-    import math
     # rating transformer
     if score > 1009000:
         rating = const + 2.15
@@ -21,13 +24,12 @@ def score_to_rating(score, const):
         rating = 0 + (score - 500000) / (800000 - 500000) * (const - 5) / 2
     else:
         rating = 0
-    return math.floor(rating*100)/100
+    return truncate_decimal(rating, 2)
 
 import json
 data = json.loads(open("./module/chunithm/data/data_song_to_const.json").read())
 
 def song_to_rating(name, diff, score):
-    
     const = data[name]["data"][diff]["const"]
     rating = score_to_rating(score, const)
     return rating, const

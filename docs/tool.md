@@ -17,6 +17,20 @@
 - 指令: `/江江 狗叫`
 - 可以在指令后空格再@一个人查询该用户的狗叫次数 / 狗叫等级
 
+> 狗叫等级计算:
+> 初始每一级要求多10次狗叫，从11级开始要求20次，21级要求40次，以此类推
+>
+> 代码部分:
+> ~~~python
+> level = 0
+> m = 0
+> while dogbark_data["dogbark_count"] >= m:
+>     m += 10 * 2 ** (level // 10)
+>     level += 1
+> ~~~
+
+
+
 ### 2. 查询狗叫排行榜
 - 指令: 
   - `/江江 狗叫排行` / `/江江 rank`: 查询总狗叫排行榜
@@ -50,7 +64,7 @@ vegetable  烂分  父亲  末白
 - 指令: `/chuni b30`
   - 国服: 在Diving-Fish查分器绑定QQ号, 在指令后面输入`cn`参数, 即`/chuni b30 cn`
   - 国际服: 通过segaid/密码绑定, 发送`/chuni b30`查询即可
-  - 国际服2: 通过国际服好友码绑定查询 (施工中所以暂未提供支持)
+  - 国际服2: 通过国际服好友码绑定查询, 发送`/chuni b30 en`查询
   - 日服: 通过chunirec中的ユーザーID绑定, 在指令后面输入`jp`参数, 即`/chuni b30 jp`
 
 ### 2. Best 30 绑定
@@ -58,7 +72,8 @@ vegetable  烂分  父亲  末白
 - 指令: `/chuni bind`
   - 国服: 不用在Bot绑定
   - 国际服: 发送`/chuni bind [sega账号] [密码]`, 记得撤回!
-  - 日服: 发送`/chuni bind [chunirecユーザーID] jp`, 记得撤回!
+  - 日服: 发送`/chuni bind [chunirecユーザーID] jp`
+  - Aqua服: 发送`/chuni bind [20位有效卡号] aqua`, 记得撤回!
 
 ### 3. 搜索歌曲
 

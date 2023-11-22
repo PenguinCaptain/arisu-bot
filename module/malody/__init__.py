@@ -8,5 +8,6 @@ def handle_command(message):
             return calc.return_msg(msg[2], msg[3])
         else:
             return "暂不支持相关指令"
-    except:
-        return "会不会是指令打错了?"
+    except Exception as e:
+        message_return = repr(e)
+    return message_return

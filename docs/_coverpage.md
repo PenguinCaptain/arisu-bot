@@ -5,4 +5,4 @@
 - 中二节奏多功能机器人
 
 [Github](https://github.com/AiharaTsubaki-1230/qqbot_chunithm-dogbark)
-[快速开始](README.md)
+[快速开始](tool.md)

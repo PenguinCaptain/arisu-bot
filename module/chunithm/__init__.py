@@ -3,7 +3,6 @@ import module.chunithm.b30 as b30
 import module.chunithm.fumen as fumen
 import json
 
-
 def handle_command(message, uid):
     try:
         msg = message.split(" ", 2)[1]
@@ -30,10 +29,12 @@ def handle_command(message, uid):
                     data_en = sega_id[str(uid)]["en"]
                 elif params == "jp":
                     data_jp = sega_id[str(uid)]["jp"]
+                elif params == "en":
+                    data_frd = sega_id[str(uid)]["en_frd"]
                 elif params == "cn":
                     pass
             except:
-                message_return = "找不到账号密码\n国际服:请使用/chuni bind [sega账号] [密码] or /chuni bind [好友码] fc 进行绑定\n日服:请使用/chuni bind [chunirec ユーザーID] jp 进行绑定\n国服: 请使用/chuni b30 cn进行查询 不需要绑定"
+                message_return = "找不到账号密码\n请使用/help指令查看说明"
                 return message_return
             if params == None:
                 message_return = b30.generate_b30(data_en["account"], data_en["password"])
@@ -41,6 +42,8 @@ def handle_command(message, uid):
                 message_return = b30.generate_b30_jp(data_jp["name"])
             elif params == "cn":
                 message_return = b30.generate_b30_cn(uid)
+            elif params == "en":
+                message_return = b30.generate_b30_frd(data_frd["code"])
             return message_return
             
         elif msg in ["bind", "绑定"]:
@@ -56,6 +59,10 @@ def handle_command(message, uid):
                 sega_id[str(uid)]["jp"] = {
                     "name": params[0]
                 }
+            elif params[1] == "fc":
+                sega_id[str(uid)]["en_frd"] = {
+                    "code": params[0]
+                }
             else:
                 sega_id[str(uid)]["en"] = {
                     "account": params[0],
@@ -68,6 +75,5 @@ def handle_command(message, uid):
         else:
             message_return = "暂不支持相关指令 / 没有相关的指令"
     except Exception as e:
-        print(e)
-        message_return = "会不会是指令打错了?"
+        message_return = repr(e)
     return message_return

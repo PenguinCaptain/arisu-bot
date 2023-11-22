@@ -60,3 +60,7 @@ vegetable
 都是豪强
 我怎么你了
 豪强
+/chuni b30 cn
+/chuni b30 aqua
+/chu b30
+aqua b30

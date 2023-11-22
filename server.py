@@ -6,6 +6,7 @@ import random
 from html import unescape
 from urllib.parse import quote
 import re
+from aiocqhttp.message import MessageSegment
 
 bot = CQHttp()
 
@@ -93,6 +94,8 @@ async def _(event: Event):
         # 注：请记得加上await！！！！
         except:
             pass
+    elif message_cq == "/help":
+        await bot.send(event, MessageSegment.image("file:////Users/a1231/Downloads/qqbot_v2/docs/help.png"))
     elif message_cq == "/保存": # 保存数据 用于调试
         json_content_str = json.dumps(user)
         open("./data/user.json", "w").write(json_content_str) # 保存 应该狗叫就够

@@ -56,23 +56,8 @@ def generate_fumen(is_ult, id, diff, title):
     # background = background.resize((3200, int(3200 / background.size[0] * background.size[1])))
 
     background.save("src/fumen.png")
-    token = "6d207e02198a847aa98d0a2a901485a5"
-
-    url = "https://freeimage.host/api/1/upload"
-    content = open("./src/fumen.png", "rb").read()
-
     
-    base64.b64encode(content)
-
-    request = requests.post(url, {
-        "key": token,
-        "action": "upload",
-        "image": base64.b64encode(content),
-        "format": "json"
-    })
-
-    url = request.json()["image"]["url"]
-    return MessageSegment.image(url)
+    return "[CQ:image,file=file:////Users/a1231/Downloads/qqbot_v2/src/fumen.png]"
 
 diff_change = {"红": "exp", "紫": "mst", "黑": "ult"}
 chunirec = json.loads(open("./module/chunithm/data/data_chunirec.json").read())

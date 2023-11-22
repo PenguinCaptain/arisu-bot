@@ -2,10 +2,15 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
-from module.chunithm.calc import score_to_rating
+from module.chunithm.calc import score_to_rating, song_to_rating
+# from calc import score_to_rating
+from module.chunithm.fc import generate_data
 from PIL import Image, ImageDraw, ImageFont
-from aiocqhttp.message import MessageSegment
-import base64
+import math
+
+def truncate_decimal(decimal, place):
+    decimal = str(decimal).split(".")
+    return float(decimal[0] + "." + decimal[1][:place])
 
 # 获取cookies
 def generate_b30(account, password):
@@ -149,44 +154,44 @@ def generate_b30(account, password):
         "team": team,
         "honor": honor,
         "name": player_name,
-        "rating": round((best_30 + recent_10) / 40, 2),
+        "rating": truncate_decimal((best_30 + recent_10) / 40, 2),
         "ratingMax": player_rating_max,
         "updatedAt": update_time,
         "best": song_data,
         "recent": song_data_recent,
-        "best30": best_30 / 30,
-        "recent10": recent_10 / 10,
+        "best30": truncate_decimal(best_30 / 30, 4),
+        "recent10": truncate_decimal(recent_10 / 10, 4),
         "candicate": []
     }
 
     b30make(player_data, "en")
 
-    token = "6d207e02198a847aa98d0a2a901485a5"
+    # token = "6d207e02198a847aa98d0a2a901485a5"
 
-    url = "https://freeimage.host/api/1/upload"
-
-    
-
-    content = open("./src/res.png", "rb").read()
+    # url = "https://freeimage.host/api/1/upload"
 
     
-    # base64.b64encode(content)
 
-    request = requests.post(url, {
-        "key": token,
-        "action": "upload",
-        "image": base64.b64encode(content),
-        "format": "json"
-    })
+    # content = open("./src/res.png", "rb").read()
 
-    # request.json()["data"]["display_url"]
+    
+    # # base64.b64encode(content)
 
-    url = request.json()["image"]["url"]
+    # request = requests.post(url, {
+    #     "key": token,
+    #     "action": "upload",
+    #     "image": base64.b64encode(content),
+    #     "format": "json"
+    # })
+
+    # # request.json()["data"]["display_url"]
+
+    # url = request.json()["image"]["url"]
 
     
     
 
-    return MessageSegment.image(url)
+    return "[CQ:image,file=file:////Users/a1231/Downloads/qqbot_v2/src/res.png]"
 
 def generate_b30_jp(user_id):
     token = "0c332b89f58298883d4a60d0c8704f5fa4126a0ec88c9bad76afa411eec4b8c2b9508641e9cdea73964b12bcb8b742fe46d1a72f0074354aa4708d4bcb7679c7"
@@ -227,28 +232,28 @@ def generate_b30_jp(user_id):
     }
     b30make(player_data, "jp")
 
-    token = "6d207e02198a847aa98d0a2a901485a5"
+    # token = "6d207e02198a847aa98d0a2a901485a5"
 
-    url = "https://freeimage.host/api/1/upload"
-
-    
-
-    content = open("./src/res.png", "rb").read()
+    # url = "https://freeimage.host/api/1/upload"
 
     
-    # base64.b64encode(content)
 
-    request = requests.post(url, {
-        "key": token,
-        "action": "upload",
-        "image": base64.b64encode(content),
-        "format": "json"
-    })
+    # content = open("./src/res.png", "rb").read()
+
+    
+    # # base64.b64encode(content)
+
+    # request = requests.post(url, {
+    #     "key": token,
+    #     "action": "upload",
+    #     "image": base64.b64encode(content),
+    #     "format": "json"
+    # })
 
     # request.json()["data"]["display_url"]
 
-    url = request.json()["image"]["url"]
-    return MessageSegment.image(url)
+    # url = request.json()["image"]["url"]
+    return "[CQ:image,file=file:////Users/a1231/Downloads/qqbot_v2/src/res.png]"
     
 def generate_b30_cn(uid):
     url = "https://www.diving-fish.com/api/chunithmprober/query/player"
@@ -294,25 +299,29 @@ def generate_b30_cn(uid):
     }
     b30make(player_data, "cn")
 
-    token = "6d207e02198a847aa98d0a2a901485a5"
+    # token = "6d207e02198a847aa98d0a2a901485a5"
 
-    url = "https://freeimage.host/api/1/upload"
+    # url = "https://freeimage.host/api/1/upload"
 
     
 
-    content = open("./src/res.png", "rb").read()
+    # content = open("./src/res.png", "rb").read()
 
-    request = requests.post(url, {
-        "key": token,
-        "action": "upload",
-        "image": base64.b64encode(content),
-        "format": "json"
-    })
+    # request = requests.post(url, {
+    #     "key": token,
+    #     "action": "upload",
+    #     "image": base64.b64encode(content),
+    #     "format": "json"
+    # })
 
 
-    url = request.json()["image"]["url"]
-    return MessageSegment.image(url)
+    # url = request.json()["image"]["url"]
+    return "[CQ:image,file=file:////Users/a1231/Downloads/qqbot_v2/src/res.png]"
 
+def generate_b30_frd(code):
+    data = generate_data(code)
+    b30make_cut(data)
+    return "[CQ:image,file=file:////Users/a1231/Downloads/qqbot_v2/src/res.png]"
 
 # # 作为export的接口
 # open("./best30.reiwa5.json", "w").write(json.dumps(player_data, ensure_ascii=False))
@@ -359,12 +368,12 @@ def b30make(data, ver):
     draw = ImageDraw.Draw(base)
 
     font = ImageFont.truetype("./src/chunithm/font/BAHNSCHRIFT.ttf", 80)
-    # font_4 = ImageFont.truetype("./src/chunithm/font/NotoSansHans-Regular-2.ttf", 80)
+    font_4 = ImageFont.truetype("./src/chunithm/font/moden.ttf", 65)
     font_2 = ImageFont.truetype("./src/chunithm/font/BAHNSCHRIFT.ttf", 40)
     font_3 = ImageFont.truetype("./src/chunithm/font/BAHNSCHRIFT.ttf", 22)
     draw.polygon([(340, 40), (280, 220), (1500, 220), (1560, 40)], fill=(255, 255, 255))
     draw.text((380, 60), "Player name:", (0, 0, 0), font_2)
-    draw.text((380, 110), fth(data["name"]), (0, 0, 0), font)
+    draw.text((380, 110), fth(data["name"]), (0, 0, 0), font_4)
 
     draw.text((850, 60), f"Rating: {data['rating']}", (0, 0, 0), font)
     draw.text((1300, 90), f"/Max: {data['ratingMax']}", (0, 0, 0), font_2)
@@ -442,22 +451,24 @@ def b30single(data, count):
     title = data["title"]
     score = data["score"]
     diff = data["difficulty"]
-    rating = data["rating"]
+    rating = truncate_decimal(data["rating"], 2)
     const = data["const"]
     id = data["id"]
-    
-
     base = Image.new("RGBA", (620, 240), (255, 255, 255, 175))
+    if id == "c0":
+        jacket = Image.new("RGB", (186, 186), (255, 255, 255))
+        base.paste(jacket, (32, 28))
+    else:
     
-    jacket = Image.open(f'./module/chunithm/image/{id}.jpg')
-    jacket = jacket.resize((186, 186))
-    base.paste(jacket, (32, 28))
+        jacket = Image.open(f'./module/chunithm/image/{id}.jpg')
+        jacket = jacket.resize((186, 186))
+        base.paste(jacket, (32, 28))
 
     draw = ImageDraw.Draw(base)
     font = ImageFont.truetype('./src/chunithm/font/NotoSansHans-Regular-2.ttf', 37)
     size = font.getlength(title)
     if size > 345:
-        title = title[:int(len(title)*(345/size))]
+        title = title[:int(len(title)*(320/size))] + ".."
     draw.text((270, 38), title, '#000000', font)
 
     font_2 = ImageFont.truetype('./src/chunithm/font/BAHNSCHRIFT.TTF', 58)
@@ -474,3 +485,62 @@ def b30single(data, count):
 
     base = base.resize((420, 158))
     return base
+
+
+def b30make_cut(data):
+    """
+    "team": "Ｉｔ　Ｉｓ・Ｄｏｇｓｈｏｕｔ　ＴＩＭＥ！",
+    "honor": "NEW COMER",
+    "name": "ｋｌｑｉｅＦａｎ",
+    "rating": 16.52,
+    "ratingMax": 16.53,
+    "updatedAt": "2023-11-16T20:06:29+08:00",
+    """
+
+    base = Image.open("./src/chunithm/blue.PNG").resize((1315, 2085))
+
+    ico = Image.open("./src/chunithm/ico.png").convert("RGBA")
+    ico_sp = Image.open("./src/chunithm/logo_sp.png").convert("RGBA")
+
+    ico = ico.resize((180, 180))
+    ico_sp = ico_sp.resize((240, 178))
+
+
+    base.paste(ico, (60, 40), mask=ico)
+
+
+    draw = ImageDraw.Draw(base)
+
+    font = ImageFont.truetype("./src/chunithm/font/BAHNSCHRIFT.ttf", 80)
+    font_4 = ImageFont.truetype("./src/chunithm/font/moden.ttf", 65)
+    font_2 = ImageFont.truetype("./src/chunithm/font/BAHNSCHRIFT.ttf", 40)
+    font_3 = ImageFont.truetype("./src/chunithm/font/BAHNSCHRIFT.ttf", 22)
+    draw.polygon([(340, 40), (280, 220), (1240, 220), (1290, 40)], fill=(255, 255, 255))
+    draw.text((380, 60), "Player name:", (0, 0, 0), font_2)
+    draw.text((380, 110), fth(data["name"]), (0, 0, 0), font_4)
+
+    draw.text((850, 60), f"Rating: {data['rating']}", (0, 0, 0), font)
+
+    draw.text((850, 160), f"Best30: {round(data['best30'], 4)}", (0, 0, 0), font_2)
+
+    draw.line([(10, 270), (580, 270)], fill=(255, 255, 255), width=10)
+
+    draw.text((590, 251), "Best", (255, 255, 255), font_2)
+
+    draw.line([(680, 270), (1300, 270)], fill=(255, 255, 255), width=10)
+
+    c = 0
+    for word in ["Generated by Arisu_Bot", "Designed by Kuroko / Code by PenguinCaptain", "Data is from CHUNITHM-NET (International Ver.)"]:
+        draw.text((1290 - font_3.getlength(word), 2000 + c * 25), word, (0, 0, 0), font_3)
+        c += 1
+
+    # Designed by Kuroko
+    # Data from CHUNITHM-NET (International Ver.)
+    count = 0
+
+    for song in data["best"][:30]:
+        pic = b30single(song, count + 1)
+        base.paste(pic, (20 + count % 3 * 430, 310 + count // 3 * 168))
+        count += 1
+    
+    base.save("./src/res.png")
