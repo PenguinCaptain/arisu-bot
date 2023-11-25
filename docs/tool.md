@@ -57,6 +57,7 @@ vegetable  烂分  父亲  末白
 教   就我不会  封嘴   打的比我
 瓶颈  乂   我从来没狗叫过  ([巴爸把吧八扒ハバ拔霸叭]|(ba *)|(\u0038\uFE0F\u20E3)){2}
 不狗叫  教我  啥比   傻逼   我是菜逼   都是豪强  我怎么你了  豪强
+/chuni b30 cn    /chuni b30 aqua    /chu b30 aqua    b30 /chuni b30 cn
 ~~~
 
 ## CHUNITHM功能相关 (/chuni)
@@ -68,13 +69,15 @@ vegetable  烂分  父亲  末白
   - 国际服: 通过segaid/密码绑定, 发送`/chuni b30`查询即可
   - 国际服2: 通过国际服好友码绑定查询, 发送`/chuni b30 en`查询
   - 日服: 通过chunirec中的ユーザーID绑定, 在指令后面输入`jp`参数, 即`/chuni b30 jp`
+  - Aqua服: 通过绑定20位卡号查询, 在指令后面输入`aqua`参数, 即`/chuni b30 aqua`
 
 ### 2. Best 30 绑定
 
 - 指令: `/chuni bind`
   - 国服: 不用在Bot绑定
   - 国际服: 发送`/chuni bind [sega账号] [密码]`, 记得撤回!
-  - 日服: 发送`/chuni bind [chunirecユーザーID] jp`
+  - 国际服2: 发送`/chuni bind [好友码] fc`绑定
+  - 日服: 发送`/chuni bind [chunirecユーザーID] jp`绑定
   - Aqua服: 发送`/chuni bind [20位有效卡号] aqua`, 记得撤回!
 
 ### 3. 搜索歌曲

@@ -1,6 +1,7 @@
 import requests
+from requests.models import Response
 
-card = "26472970039944107244"
+card = "78325657371257261555"
 
 import socket
 from typing import reveal_type
@@ -68,3 +69,27 @@ class AimeDB:
         # Decrypt the received data
         decrypted_data = cipher.decrypt(received_data)
         return decrypted_data
+
+user_id = AimeDB.get_user_id(AimeDB(), access_code=card)
+print(user_id)
+
+# aqua api endpoint是http://aime.samnya.cn/ChuniServlet/2.10/A61E01A4356/ChuniServlet/
+
+
+
+"""
+aqua api:
+POST /GetUserMusicApi {"userId": string, "nextIndex":string, "maxCount":string}
+有个POST /GetUserRecentRatingApi {"userId":string}
+哦对还有个POST /GetUserDataApi {"userId":string}
+"""
+
+url = "http://aime.samnya.cn/ChuniServlet/2.10/A61E01A4356/ChuniServlet/GetUserMusicApi/"
+
+response_b30 = requests.post(url, json = {
+    "userId": str(user_id),
+    "nextIndex": "-1",
+    "maxCount": "30"
+})
+
+print(response_b30.text)

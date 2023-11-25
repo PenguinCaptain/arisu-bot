@@ -64,3 +64,6 @@ vegetable
 /chuni b30 aqua
 /chu b30
 aqua b30
+/chuni b30 cn
+雅迪
+狗叫

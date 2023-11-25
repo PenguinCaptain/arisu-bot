@@ -31,6 +31,8 @@ def handle_command(message, uid):
                     data_jp = sega_id[str(uid)]["jp"]
                 elif params == "en":
                     data_frd = sega_id[str(uid)]["en_frd"]
+                elif params == "aqua":
+                    data_aq = sega_id[str(uid)]["aqua"]
                 elif params == "cn":
                     pass
             except:
@@ -44,6 +46,8 @@ def handle_command(message, uid):
                 message_return = b30.generate_b30_cn(uid)
             elif params == "en":
                 message_return = b30.generate_b30_frd(data_frd["code"])
+            elif params == "aqua":
+                message_return = b30.generate_b30_aqua(data_aq["card"])
             return message_return
             
         elif msg in ["bind", "绑定"]:
@@ -53,7 +57,8 @@ def handle_command(message, uid):
                 sega_id[str(uid)] = {
                     "en": {},
                     "en_frd": {},
-                    "jp": {}
+                    "jp": {},
+                    "aqua": {}
                 }
             if params[1] == "jp":
                 sega_id[str(uid)]["jp"] = {
@@ -62,6 +67,12 @@ def handle_command(message, uid):
             elif params[1] == "fc":
                 sega_id[str(uid)]["en_frd"] = {
                     "code": params[0]
+                }
+            elif params[1] == "aqua":
+                if len(params[0]) != 20:
+                    return "卡号应为20位数字"
+                sega_id[str(uid)]["aqua"] = {
+                    "card": params[0]
                 }
             else:
                 sega_id[str(uid)]["en"] = {

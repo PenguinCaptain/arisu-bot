@@ -1,7 +1,7 @@
 import requests
 import json
 from http.cookiejar import CookiePolicy
-from module.chunithm.calc import song_to_rating
+from module.chunithm.calc import song_to_rating, truncate_decimal
 from lxml import html
 
 account = "acekuro0219"
@@ -51,7 +51,7 @@ def generate_data(code):
     if code not in friend_list:
         invite_friend(session, code)
         print("Not a friend, invite sent")
-        return
+        return "Not a friend, invite sent"
 
     print("Registering as favorite...")
     register_favorite(session, code)
@@ -133,7 +133,7 @@ def generate_data(code):
         "rating": "--",
         "ratingMax": "--",
         "best": record,
-        "best30": best30
+        "best30": truncate_decimal(best30 / 30, 4)
     }
 
     print("Saving record...")

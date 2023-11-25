@@ -1,0 +1,898 @@
+[
+    {
+        "userId": "46351343",
+        "length": "29",
+        "nextIndex": "29",
+        "userMusicList": [
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "7",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1009414",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "13",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "45",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008500",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "118",
+                        "level": "4",
+                        "playCount": "1",
+                        "scoreMax": "1008154",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "322",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1009573",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "true",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "13",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "486",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008609",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "559",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1006965",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "11",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "697",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008050",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "700",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007336",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "11",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "730",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008750",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "749",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008445",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "751",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007702",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "835",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1006782",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "11",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "865",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007652",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "893",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007925",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "959",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007952",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "978",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007355",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "11",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "999",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007548",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "1009",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1009044",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "13",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "1016",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008200",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "1077",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008062",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "1100",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1009070",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "13",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2038",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007132",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "11",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2039",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007883",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2090",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008496",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2171",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007542",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2182",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1009157",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "13",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2346",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1009067",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "13",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2384",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1008157",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "true",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            },
+            {
+                "length": "1",
+                "userMusicDetailList": [
+                    {
+                        "musicId": "2427",
+                        "level": "3",
+                        "playCount": "1",
+                        "scoreMax": "1007857",
+                        "resRequestCount": "0",
+                        "resAcceptCount": "0",
+                        "resSuccessCount": "0",
+                        "missCount": "0",
+                        "maxComboCount": "0",
+                        "isFullCombo": "false",
+                        "isAllJustice": "false",
+                        "isSuccess": "false",
+                        "fullChain": "0",
+                        "maxChain": "0",
+                        "scoreRank": "12",
+                        "isLock": "false",
+                        "theoryCount": "0",
+                        "ext1": "0"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "userId": "46351343",
+        "length": "10",
+        "userRecentRatingList": [
+            {
+                "musicId": "2346",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1009067"
+            },
+            {
+                "musicId": "893",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1007925"
+            },
+            {
+                "musicId": "2039",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1007883"
+            },
+            {
+                "musicId": "45",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1008500"
+            },
+            {
+                "musicId": "559",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1006965"
+            },
+            {
+                "musicId": "2384",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1008157"
+            },
+            {
+                "musicId": "1009",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1009044"
+            },
+            {
+                "musicId": "2182",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1009157"
+            },
+            {
+                "musicId": "959",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1007952"
+            },
+            {
+                "musicId": "730",
+                "difficultId": "3",
+                "romVersionCode": "2012000",
+                "score": "1008750"
+            }
+        ]
+    },
+    {
+        "userId": "46351343",
+        "userData": {
+            "accessCode": "78325657371257261555",
+            "userName": "Ｐ３ＮＧＵ１Ｎ",
+            "level": "0",
+            "reincarnationNum": "0",
+            "exp": "0",
+            "point": "0",
+            "totalPoint": "0",
+            "playCount": "0",
+            "multiPlayCount": "0",
+            "playerRating": "0",
+            "highestRating": "0",
+            "nameplateId": "1",
+            "frameId": "1",
+            "characterId": "0",
+            "trophyId": "0",
+            "playedTutorialBit": "0",
+            "firstTutorialCancelNum": "0",
+            "masterTutorialCancelNum": "0",
+            "totalMapNum": "0",
+            "totalHiScore": "0",
+            "totalBasicHighScore": "0",
+            "totalAdvancedHighScore": "0",
+            "totalExpertHighScore": "0",
+            "totalMasterHighScore": "0",
+            "totalUltimaHighScore": "0",
+            "eventWatchedDate": "2023-11-22 00:52:15",
+            "friendCount": "0",
+            "firstGameId": "SDBT",
+            "firstRomVersion": "1.00.00",
+            "firstDataVersion": "1.00.00",
+            "firstPlayDate": "2023-11-22 00:52:15",
+            "lastGameId": "SDBT",
+            "lastRomVersion": "1.00.00",
+            "lastDataVersion": "1.00.00",
+            "lastPlayDate": "2023-11-22 00:52:15",
+            "lastPlaceId": "291",
+            "lastPlaceName": "SEGA",
+            "lastRegionId": "1",
+            "lastRegionName": "W",
+            "lastAllNetId": "456",
+            "lastClientId": "A69E01A8888",
+            "lastCountryCode": "0",
+            "userNameEx": "",
+            "compatibleCmVersion": "",
+            "medal": "0",
+            "mapIconId": "1",
+            "voiceId": "1",
+            "avatarWear": "1100001",
+            "avatarHead": "1200001",
+            "avatarFace": "1300001",
+            "avatarSkin": "1400001",
+            "avatarItem": "1500001",
+            "avatarFront": "1600001",
+            "avatarBack": "1700001",
+            "classEmblemBase": "0",
+            "classEmblemMedal": "0",
+            "stockedGridCount": "0",
+            "exMapLoopCount": "0",
+            "netBattlePlayCount": "0",
+            "netBattleWinCount": "0",
+            "netBattleLoseCount": "0",
+            "netBattleConsecutiveWinCount": "0",
+            "charaIllustId": "0",
+            "skillId": "100002",
+            "overPowerPoint": "0",
+            "overPowerRate": "0",
+            "overPowerLowerRank": "0",
+            "avatarPoint": "0",
+            "battleRankId": "0",
+            "battleRankPoint": "0",
+            "eliteRankPoint": "0",
+            "netBattle1stCount": "0",
+            "netBattle2ndCount": "0",
+            "netBattle3rdCount": "0",
+            "netBattle4thCount": "0",
+            "netBattleCorrection": "0",
+            "netBattleErrCnt": "0",
+            "netBattleHostErrCnt": "0",
+            "battleRewardStatus": "0",
+            "battleRewardIndex": "0",
+            "battleRewardCount": "0",
+            "ext1": "0",
+            "ext2": "0",
+            "ext3": "0",
+            "ext4": "0",
+            "ext5": "0",
+            "ext6": "0",
+            "ext7": "0",
+            "ext8": "0",
+            "ext9": "0",
+            "ext10": "0",
+            "extStr1": "",
+            "extStr2": "",
+            "extLong1": "0",
+            "extLong2": "0"
+    }

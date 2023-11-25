@@ -17,7 +17,7 @@ init = json.loads(open("./data/init.json").read())
 nickname = json.loads(open("./data/nickname.json").read())
 dogbark = open("./src/dogbark.txt").read().splitlines()
 
-user_init = { "gt": 0,
+user_init = { "gp": 0,
         "lv": 1,
         "exp": 0,
         "last_sign": 0,

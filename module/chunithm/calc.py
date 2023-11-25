@@ -1,6 +1,9 @@
 def truncate_decimal(decimal, place):
     decimal = str(decimal).split(".")
-    return float(decimal[0] + "." + decimal[1][:place])
+    if len(decimal) == 2:
+        return float(decimal[0] + "." + decimal[1][:place])
+    else:
+        return float(decimal[0])
 
 def score_to_rating(score, const):
     # rating transformer
